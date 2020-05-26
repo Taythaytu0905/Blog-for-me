@@ -1,0 +1,10 @@
+.heading {
+  text-align: center;
+}
+.heading .avatar {
+  background-image: url("../../public/images/Do.jpg");
+}
+.heading .linkRouter a {
+  text-decoration: none;
+  color: black;
+}

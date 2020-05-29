@@ -1,55 +1,33 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem
-} from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./Home";
-import About from "./About";
-import Blog from "./Blog";
+import React from "react";
 
-const Router = props => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Home from "./Home";
+import Blog from "./Blog";
+import About from "./About";
+import Hoc from "./Blog/ES6";
+
+function Routers() {
   return (
     <Router>
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <Link to="/">Home</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/blog">Blog</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/about">About</Link>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/blog">
+          <Route path="/blog" exact>
             <Blog />
           </Route>
-          <Route path="/">
+          <Route path="/about" exact>
+            <About />
+          </Route>
+          <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/blog/es6" exact>
+            <Hoc />
           </Route>
         </Switch>
       </div>
     </Router>
   );
-};
+}
 
-export default Router;
+export default Routers;
